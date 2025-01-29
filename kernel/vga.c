@@ -2,7 +2,7 @@
 
 // TODO: find a way to make using this variable obsolete
 size_t scr_index;
-uint16_t* scr_buf;
+uint16_t *scr_buf;
 
 void scr_clear()
 {
@@ -22,7 +22,8 @@ void scr_write(const char c, const char color)
 void scr_flush()
 {
   uint16_t *vga_ptr = (uint16_t *)VGA_ADDR;
-  for (size_t i = 0; i < scr_index; ++i) {
+  for (size_t i = 0; i < scr_index; ++i)
+  {
     vga_ptr[i] = scr_buf[i];
   }
 }

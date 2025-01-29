@@ -4,4 +4,4 @@
 #include "vga.h"
 
 void putchar(const char c);
-void puts(const char* str);
+void puts(const char *str);
