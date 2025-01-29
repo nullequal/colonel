@@ -1,5 +1,5 @@
-#include "vga.h"
 #include "gdt.h"
+#include "stdio.h"
 
 void kmain() {
   gdt_init();
