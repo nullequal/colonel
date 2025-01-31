@@ -22,8 +22,22 @@ void scr_write(const char c, const char color)
 void scr_flush()
 {
   uint16_t *vga_ptr = (uint16_t *)VGA_ADDR;
-  for (size_t i = 0; i < scr_index; ++i)
+  size_t i = 0, j = 0;
+  while (i < scr_index)
   {
-    vga_ptr[i] = scr_buf[i];
+    switch (scr_buf[i] & 0xFF)
+    {
+    case '\n':
+      j = ((__builtin_ceilf(j / 80) + 1) * 80) - 1;
+      break;
+    case '\t':
+      j += 8;
+      break;
+    default:
+      vga_ptr[j] = scr_buf[i];
+      break;
+    }
+    ++j;
+    ++i;
   }
 }
