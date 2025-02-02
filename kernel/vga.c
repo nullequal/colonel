@@ -28,7 +28,7 @@ void scr_flush()
     switch (scr_buf[i] & 0xFF)
     {
     case '\n':
-      j = ((__builtin_ceilf(j / 80) + 1) * 80) - 1;
+      j = ((__builtin_ceilf(j / 79) + 1) * 79);
       break;
     case '\t':
       j += 8;
