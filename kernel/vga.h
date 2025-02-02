@@ -1,9 +1,9 @@
 #ifndef VGA_H
 #define VGA_H
 
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <stdbool.h>
 
 #define VGA_ADDR 0xb8000
 
@@ -17,8 +17,7 @@
 // default attribute
 #define DEFAULT_COLOR TEXT_COLOR(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK)
 
-enum
-{
+enum {
   VGA_COLOR_BLACK = 0x0,
   VGA_COLOR_BLUE = 0x1,
   VGA_COLOR_GREEN = 0x2,
