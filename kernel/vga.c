@@ -14,6 +14,8 @@ void scr_clear() {
 void scr_write(const char c, const char color) {
   scr_buf[scr_index] = TEXT_CHAR(c, color);
   ++scr_index;
+  // TODO: find a way to run this peroidically
+  scr_flush();
 }
 
 void scr_flush() {

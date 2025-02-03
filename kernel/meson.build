@@ -1,7 +1,3 @@
-headers = ['vga.h', 'gdt.h']
-c_sources = ['vga.c', 'gdt.c']
-asm_sources = ['gdt.s']
+sources = ['gdt.c', 'gdt.s', 'vga.c']
 
-k_inc = include_directories('.')
-
-k = static_library('k', c_sources, asm_sources, c_args: ['-ffreestanding', '-Wall', '-Wextra'])
+k = static_library('k', sources, include_directories: includes, c_args: ['-ffreestanding', '-Wall', '-Wextra'])
