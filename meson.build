@@ -3,7 +3,7 @@ project('colonel', 'c',
   default_options : ['c_std=gnu99'])
 
 # kernel
-subdir('include')
+includes = include_directories('include')
 subdir('kernel')
 # unit test: term
 custom_target(input: ['boot.ld', 'boot.s'], output: 'tty', depends: [k],
