@@ -1,5 +1,5 @@
-#ifndef GDT_H
-#define GDT_H
+#ifndef PRINTK_H
+#define PRINTK_H
 
 #include "string.h"
 #include "vga.h"
