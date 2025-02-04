@@ -1,6 +1,9 @@
 // although i use paging, in x86 segmentation is a must.
 // so i initiallize a gdt with hardcoded overlapping segments
 
+#ifndef GDT_H
+#define GDT_H
+
 #include <stddef.h>
 #include <stdint.h>
 
@@ -18,3 +21,5 @@ typedef struct gdt_entry gdt_entry_t;
 extern void gdt_flush(uint16_t limit, uint32_t base);
 void gdt_set_desc(size_t index, uint8_t access);
 void gdt_init();
+
+#endif
