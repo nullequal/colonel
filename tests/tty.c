@@ -15,7 +15,6 @@ void printk(const char* str) {
 }
 
 void kmain() {
-  gdt_init();
   scr_clear();
   printk("Hello, World!\n");
   return;
