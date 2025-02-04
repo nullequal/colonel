@@ -1,23 +1,20 @@
-.intel_syntax noprefix
-
 gdt_reg:
 .word 0
 .long 0
 
 .global gdt_flush
-gdt_flush:
-    mov ax, [esp+4]
-    mov [gdt_reg], ax
-    mov eax, [esp+8]
-    mov [gdt_reg+2], eax
-    lgdt [gdt_reg]        
-
-    mov ax, 0x10      
-    mov ds, ax        
-    mov es, ax
-    mov fs, ax
-    mov gs, ax
-    mov ss, ax
-    jmp 0x08:.flush 
-.flush:
+gdt_flush: 
+    movw 4(%esp),%ax
+    movw %ax,gdt_reg
+    movl 8(%esp),%eax
+    movl %eax,gdt_reg+2
+    lgdt gdt_reg
+    movw $0x10,%ax
+    movw %ax,%ds
+    movw %ax,%es
+    movw %ax,%fs
+    movw %ax,%gs
+    movw %ax,%ss
+    jmp 0x08:gdt_flush.flush
+gdt_flush.flush: 
     ret
