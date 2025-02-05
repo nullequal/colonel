@@ -5,10 +5,7 @@ size_t scr_index;
 uint16_t *scr_buf;
 
 void scr_clear() {
-  uint16_t *vga_ptr = (uint16_t *)VGA_ADDR;
-  for (size_t i = 0; i < VGA_COLUMNS * VGA_ROWS; ++i) {
-    vga_ptr[i] = (uint16_t)0x0;
-  }
+  memset((uint16_t*)VGA_ADDR, 0x0, VGA_COLUMNS*VGA_ROWS);
 }
 
 void scr_write(const char c, const char color) {

@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "string.h"
+
 #define VGA_ADDR 0xb8000
 
 #define VGA_ROWS 25
