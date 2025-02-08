@@ -14,7 +14,7 @@ stack_top:
 .section .text
 .global _start
 _start:
-    mov $stack_top, %esp
+    movl $stack_top, %esp
     call gdt_init
     call kmain
     cli
