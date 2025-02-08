@@ -16,6 +16,7 @@ stack_top:
 _start:
     movl $stack_top, %esp
     call gdt_init
+    call idt_init
     call kmain
     cli
     hlt

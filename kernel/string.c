@@ -8,7 +8,7 @@ size_t strlen(const char *str) {
 }
 
 void memset(void *s, int c, size_t n) {
-  for (size_t i = 0; i < n; ++i) {
-    ((int*)s)[i] = c;
-  }
+  int *temp = (int *)s;
+  for (; n != 0; n--)
+    *temp++ = c;
 }
