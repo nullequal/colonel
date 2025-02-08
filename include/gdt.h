@@ -18,8 +18,16 @@ struct gdt_entry {
 
 typedef struct gdt_entry gdt_entry_t;
 
-extern void gdt_flush(uint16_t limit, uint32_t base);
-void gdt_set_desc(size_t index, uint8_t access);
+struct gdt_reg {
+  uint16_t limit;
+  uint32_t base;
+} __attribute__((packed));
+
+typedef struct gdt_reg gdt_reg_t;
+
 void gdt_init();
+void gdt_set_desc(size_t index, uint8_t access);
+
+extern void gdt_reload_selectors();
 
 #endif

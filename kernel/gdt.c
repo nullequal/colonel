@@ -30,7 +30,11 @@ void gdt_init() {
   gdt_set_desc(3, 0xFA);
   gdt_set_desc(4, 0xF2);
 
-  gdt_flush(sizeof(gdt) - 1, (uint32_t)&gdt);
+  gdt_reg_t gdtr;
+  gdtr.limit = sizeof(gdt) - 1;
+  gdtr.base = (uint32_t)&gdt;
+  __asm__ volatile("lgdt %0" ::"m"(gdtr));
+  gdt_reload_selectors();
 
   __asm__ volatile("sti");
 }
