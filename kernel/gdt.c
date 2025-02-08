@@ -15,7 +15,7 @@ void gdt_set_desc(size_t index, uint8_t access) {
 }
 
 void gdt_init() {
-  asm("cli");
+  __asm__ volatile("cli");
 
   // null segment
   gdt[0].base_low = 0;
@@ -32,5 +32,5 @@ void gdt_init() {
 
   gdt_flush(sizeof(gdt) - 1, (uint32_t)&gdt);
 
-  asm("sti");
+  __asm__ volatile("sti");
 }
