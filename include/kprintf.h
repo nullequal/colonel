@@ -4,6 +4,6 @@
 #include "string.h"
 #include "vga.h"
 
-void printk(const char *str);
+void kprintf(const char *format);
 
 #endif

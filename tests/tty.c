@@ -1,7 +1,7 @@
-#include "printk.h"
+#include "kprintf.h"
 
 void kmain() {
   scr_clear();
-  printk("Hello, World!\n");
+  kprintf("Hello, World!\n");
   return;
 }
