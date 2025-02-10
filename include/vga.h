@@ -39,7 +39,7 @@ enum {
 };
 
 void scr_clear();
-void scr_write(const char c, const char color);
+void scr_write(const char c);
 void scr_flush();
 
 #endif
