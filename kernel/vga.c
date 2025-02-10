@@ -4,7 +4,7 @@
 size_t scr_index;
 uint16_t *scr_buf;
 
-void scr_clear() {
+void scr_clear() { memset((uint16_t *)VGA_ADDR, 0x0, VGA_COLUMNS * VGA_ROWS); }
   memset((uint16_t*)VGA_ADDR, 0x0, VGA_COLUMNS*VGA_ROWS);
 }
 
