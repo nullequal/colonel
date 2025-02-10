@@ -21,7 +21,7 @@ void scr_flush() {
   while (i < scr_index) {
     switch (scr_buf[i] & 0xFF) {
     case '\n':
-      j = ((__builtin_ceilf(j / 79) + 1) * 79);
+      j = ((__builtin_ceilf(j / (float)VGA_COLUMNS)) * VGA_COLUMNS);
       break;
     case '\t':
       j += 8;
