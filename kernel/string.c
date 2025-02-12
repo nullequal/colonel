@@ -37,3 +37,17 @@ void *memmove(void *s1, void *s2, size_t n) {
   }
   return s1;
 }
+
+int memcmp(const void *s1, const void *s2, size_t n) {
+  uint8_t *temp1 = (uint8_t *)s1;
+  uint8_t *temp2 = (uint8_t *)s2;
+  if (s1 == s2) {
+    return 0;
+  }
+  for (; n != 0; n--) {
+    if (*temp1 != *temp2) {
+      return *temp1 - *temp2;
+    }
+  }
+  return 0;
+}
