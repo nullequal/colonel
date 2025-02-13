@@ -1,9 +1,9 @@
 #include "vga.h"
-#include <string.h>
 
 // TODO: find a way to make using this variable obsolete
 size_t unflushed_count;
-size_t scr_pos;
+size_t scr_pos_x;
+size_t scr_pos_y;
 char *scr_buf;
 
 void scr_clear() { memset((uint16_t *)VGA_ADDR, 0x0, VGA_COLUMNS * VGA_ROWS); }
@@ -20,14 +20,19 @@ void scr_flush() {
   for (; unflushed_count != 0; unflushed_count--) {
     switch (*(scr_buf - unflushed_count)) {
     case '\n':
-      scr_pos = ((__builtin_ceilf(scr_pos / (float)VGA_COLUMNS)) * VGA_COLUMNS);
+      ++scr_pos_y;
+      scr_pos_x = 0;
       break;
     case '\t':
-      scr_pos += 8;
+      scr_pos_x += 8;
       break;
     default:
-      vga_ptr[scr_pos] = TEXT_CHAR(*(scr_buf - unflushed_count), DEFAULT_COLOR);
-      ++scr_pos;
+      vga_ptr[scr_pos_x + (VGA_COLUMNS * scr_pos_y)] =
+          TEXT_CHAR(*(scr_buf - unflushed_count), DEFAULT_COLOR);
+      if (++scr_pos_x >= VGA_COLUMNS) {
+        ++scr_pos_y;
+        scr_pos_x -= VGA_COLUMNS;
+      }
       break;
     }
   }
