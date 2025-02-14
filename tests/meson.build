@@ -1,11 +1,12 @@
 # unit test: tty
 custom_target(
-    input: ['../boot.ld', '../boot.s'],
+    input: ['../tests/tty.c', '../boot.s', '../boot.ld'],
     output: 'tty',
     depends: [k],
     command: [
         get_option('env.CC'),
-        '-T', '@INPUT@',
+        '@INPUT0@', '@INPUT1@',
+        '-T', '@INPUT2@',
         '-o', '@OUTPUT@',
         '-ffreestanding',
         '-nostdlib',
