@@ -7,6 +7,16 @@ size_t strlen(const char *str) {
   return s - str;
 }
 
+char *strcat(char *s1, const char *s2) {
+  char *temp = s1;
+  for (; *s1; s1++)
+    ;
+  for (; *s2;) {
+    *s1++ = *s2++;
+  }
+  return temp;
+}
+
 void *memset(void *s, int c, size_t n) {
   int *temp = (int *)s;
   for (; n != 0; n--)
