@@ -18,5 +18,4 @@ _start:
     call gdt_init
     call idt_init
     call kmain
-    cli
-    hlt
+    jmp halt
