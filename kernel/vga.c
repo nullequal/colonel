@@ -8,9 +8,11 @@ char *scr_buf;
 
 void scr_clear() { memset((uint16_t *)VGA_ADDR, 0x0, VGA_COLUMNS * VGA_ROWS); }
 
-void scr_write(const char c) {
-  *scr_buf++ = c;
-  ++unflushed_count;
+void scr_write(const char* s, size_t n) {
+  unflushed_count += n;
+  for (; n != 0; n--) {
+    *scr_buf++ = *s++;
+  }
   // TODO: find a way to run this periodically
   scr_flush();
 }
