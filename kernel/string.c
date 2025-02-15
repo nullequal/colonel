@@ -14,7 +14,7 @@ void *memset(void *s, int c, size_t n) {
   return s;
 }
 
-void *memcpy(void *s1, void *s2, size_t n) {
+void *memcpy(void *s1, const void *s2, size_t n) {
   int *temp1 = (int *)s1;
   const int *temp2 = (int *)s2;
   for (; n != 0; n--) {
@@ -23,7 +23,7 @@ void *memcpy(void *s1, void *s2, size_t n) {
   return s1;
 }
 
-void *memmove(void *s1, void *s2, size_t n) {
+void *memmove(void *s1, const void *s2, size_t n) {
   int *temp1 = (int *)s1;
   int *temp2 = (int *)s2;
   if (s1 < s2) {
