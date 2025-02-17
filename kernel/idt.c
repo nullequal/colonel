@@ -1,4 +1,5 @@
 #include "idt.h"
+#include "string.h"
 
 idt_entry_t idt[256];
 

@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-#include "control.h"
-
 struct registers {
   uint32_t ds;
   uint32_t edi, esi, ebp, ignored, ebx, edx, ecx, eax;

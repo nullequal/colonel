@@ -1,4 +1,5 @@
 #include "kprintf.h"
+#include "vga.h"
 
 void kmain() {
   scr_clear();

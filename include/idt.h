@@ -4,8 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "string.h"
-
 struct idt_entry {
   uint16_t base_lo;
   uint16_t sel;

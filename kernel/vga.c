@@ -1,4 +1,5 @@
 #include "vga.h"
+#include "string.h"
 
 // TODO: find a way to make using this variable obsolete
 size_t unflushed_count;
