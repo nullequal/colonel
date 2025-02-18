@@ -10,12 +10,8 @@
 #define VGA_ROWS 25
 #define VGA_COLUMNS 80
 
-// x = foreground, y = background
-#define TEXT_COLOR(x, y) ((x) | (y) << 4)
 // x = character, y = color
 #define TEXT_CHAR(x, y) ((x) | (y) << 8)
-// default attribute
-#define DEFAULT_COLOR TEXT_COLOR(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK)
 
 enum {
   VGA_COLOR_BLACK = 0x0,
@@ -37,7 +33,8 @@ enum {
 };
 
 void scr_clear();
-void scr_write(const char* s, size_t n);
+void scr_write(const char *s, size_t n);
 void scr_flush();
+void scr_set_color(uint8_t fg, uint8_t bg);
 
 #endif

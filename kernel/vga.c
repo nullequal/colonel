@@ -2,10 +2,13 @@
 #include "string.h"
 
 // TODO: find a way to make using this variable obsolete
-size_t unflushed_count;
+uint8_t scr_color;
 size_t scr_pos_x;
 size_t scr_pos_y;
+size_t unflushed_count;
 char *scr_buf;
+
+void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
 
 void scr_clear() { memset((uint16_t *)VGA_ADDR, 0x0, VGA_COLUMNS * VGA_ROWS); }
 
@@ -31,7 +34,7 @@ void scr_flush() {
       break;
     default:
       vga_ptr[scr_pos_x + (VGA_COLUMNS * scr_pos_y)] =
-          TEXT_CHAR(*(scr_buf - unflushed_count), DEFAULT_COLOR);
+          TEXT_CHAR(*(scr_buf - unflushed_count), scr_color);
       if (++scr_pos_x >= VGA_COLUMNS) {
         ++scr_pos_y;
         scr_pos_x -= VGA_COLUMNS;
