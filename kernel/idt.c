@@ -1,4 +1,5 @@
 #include "idt.h"
+#include "gdt.h"
 #include "string.h"
 
 idt_entry_t idt[256];
@@ -49,7 +50,7 @@ void idt_set_gate(size_t index, uint32_t base) {
   idt[index].base_lo = base & 0xFFFF;
   idt[index].base_hi = (base >> 16) & 0xFFFF;
 
-  idt[index].sel = 0x08;
+  idt[index].sel = GDT_CODE_SELECTOR;
   idt[index].always0 = 0;
   idt[index].flags = 0x8E;
 }

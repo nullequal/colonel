@@ -34,7 +34,7 @@ void gdt_init() {
   gdtr.limit = sizeof(gdt) - 1;
   gdtr.base = (uint32_t)&gdt;
   __asm__ volatile("lgdt %0" ::"m"(gdtr));
-  gdt_reload_selectors();
+  gdt_reload_selectors(GDT_DATA_SELECTOR, GDT_CODE_SELECTOR);
 
   __asm__ volatile("sti");
 }

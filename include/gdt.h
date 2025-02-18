@@ -4,6 +4,9 @@
 #ifndef GDT_H
 #define GDT_H
 
+#define GDT_CODE_SELECTOR 0x08
+#define GDT_DATA_SELECTOR 0x10
+
 #include <stddef.h>
 #include <stdint.h>
 
@@ -28,6 +31,6 @@ typedef struct gdt_reg gdt_reg_t;
 void gdt_init();
 void gdt_set_desc(size_t index, uint8_t access);
 
-extern void gdt_reload_selectors();
+extern void gdt_reload_selectors(uint8_t data_selector, uint8_t code_selector);
 
 #endif
