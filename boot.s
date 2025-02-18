@@ -15,7 +15,6 @@ stack_top:
 .global _start
 _start:
     movl $stack_top, %esp
-    call gdt_init
-    call idt_init
+    call init
     call kmain
     jmp halt

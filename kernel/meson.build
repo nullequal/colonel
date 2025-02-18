@@ -4,6 +4,7 @@ sources = [
     'gdt.s',
     'halt.s',
     'idt.c',
+    'init.c',
     'isr.c',
     'isr.s',
     'kprintf.c',
