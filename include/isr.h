@@ -12,6 +12,6 @@ struct registers {
 
 typedef struct registers registers_t;
 
-__attribute__((noreturn)) void exception_handler();
+__attribute__((noreturn)) void exception_handler(registers_t regs);
 
 #endif
