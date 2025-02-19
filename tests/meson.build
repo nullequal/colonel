@@ -1,7 +1,7 @@
 # unit test: tty
 executable(
-    'tty',
-    'tty.c',
+    'print',
+    'print.c',
     '../boot.s',
     include_directories: includes,
     c_args: ['-ffreestanding'],
