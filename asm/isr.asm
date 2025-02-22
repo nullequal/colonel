@@ -63,10 +63,10 @@ exception_handler_wrap:
     call exception_handler
 
     pop eax
-    mov ds, bx
-    mov es, bx
-    mov fs, bx
-    mov gs, bx
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
 
     popa                   
     add esp, 8
