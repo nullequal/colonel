@@ -55,7 +55,7 @@ void scr_flush() {
     default:
       uint16_t where = scr_pos_x + (VGA_COLUMNS * scr_pos_y);
       vga_ptr[where] =
-          TEXT_CHAR(*(scr_buf - unflushed_count), scr_color);
+          VGA_CHAR(*(scr_buf - unflushed_count), scr_color);
       scr_move_csr(where);
       if (++scr_pos_x >= VGA_COLUMNS) {
         ++scr_pos_y;

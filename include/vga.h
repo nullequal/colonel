@@ -11,7 +11,7 @@
 #define VGA_COLUMNS 80
 
 // x = character, y = color
-#define TEXT_CHAR(x, y) ((x) | (y) << 8)
+#define VGA_CHAR(x, y) ((x) | (y) << 8)
 
 enum {
   VGA_COLOR_BLACK = 0x0,
