@@ -12,7 +12,7 @@ sources = [
 k = static_library(
     'k',
     sources,
-    asmobjs,
+    asm_o,
     include_directories: includes,
     c_args: ['-ffreestanding', '-Wall', '-Wextra'],
 )

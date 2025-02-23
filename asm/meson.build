@@ -6,4 +6,11 @@ assembler = generator(
     arguments: ['-f', 'elf32', '@INPUT@', '-o', '@OUTPUT@'],
 )
 
-asmobjs = assembler.process(['boot.asm', 'isr.asm', 'halt.asm', 'gdt.asm'])
+asm_sources = [
+    'boot.asm',
+    'gdt.asm',
+    'halt.asm',
+    'isr.asm',
+]
+
+asm_o = assembler.process(asm_sources)
