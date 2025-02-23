@@ -1,4 +1,5 @@
 #include "vga.h"
+#include "ports.h"
 #include "string.h"
 
 // TODO: find a way to make using this variable obsolete
@@ -7,6 +8,25 @@ size_t scr_pos_x;
 size_t scr_pos_y;
 size_t unflushed_count;
 char *scr_buf;
+
+void scr_enable_csr(uint8_t start_scanline, uint8_t end_scanline) {
+  outb(0x3D4, 0x0A);
+  outb(0x3D5, (inb(0x3D5) & 0xC0) | start_scanline);
+  outb(0x3D4, 0x0B);
+  outb(0x3D5, (inb(0x3D5) & 0xE0) | end_scanline);
+}
+
+void scr_disable_csr() {
+  outb(0x3D4, 0x0A);
+  outb(0x3D5, 0x20);
+}
+
+void scr_move_csr(uint16_t pos) {
+  outb(0x3D4, 0x0F);
+	outb(0x3D5, (uint8_t)(pos & 0xFF));
+	outb(0x3D4, 0x0E);
+	outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
+}
 
 void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
 
@@ -33,8 +53,10 @@ void scr_flush() {
       scr_pos_x += 8;
       break;
     default:
-      vga_ptr[scr_pos_x + (VGA_COLUMNS * scr_pos_y)] =
+      uint16_t where = scr_pos_x + (VGA_COLUMNS * scr_pos_y);
+      vga_ptr[where] =
           TEXT_CHAR(*(scr_buf - unflushed_count), scr_color);
+      scr_move_csr(where);
       if (++scr_pos_x >= VGA_COLUMNS) {
         ++scr_pos_y;
         scr_pos_x -= VGA_COLUMNS;
