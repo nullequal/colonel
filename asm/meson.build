@@ -11,6 +11,7 @@ asm_sources = [
     'gdt.asm',
     'halt.asm',
     'isr.asm',
+    'ports.asm',
 ]
 
 asm_o = assembler.process(asm_sources)
