@@ -1,6 +1,5 @@
 #include "vga.h"
 #include "ports.h"
-#include "string.h"
 
 uint8_t scr_color;
 size_t scr_pos_x;
@@ -30,7 +29,11 @@ void scr_move_csr(uint16_t pos) {
 
 void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
 
-void scr_clear() { memset((uint16_t *)VGA_ADDR, 0x0, VGA_COLUMNS * VGA_ROWS); }
+void scr_clear() {
+  for (size_t i = 0; i < VGA_COLUMNS * VGA_ROWS; ++i) {
+    ((uint16_t *)VGA_ADDR)[i] = 0x0 | (scr_color << 8);
+  }
+}
 
 void scr_write(const char *s, size_t n) {
   unflushed_count += n;
