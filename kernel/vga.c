@@ -2,10 +2,10 @@
 #include "ports.h"
 #include "string.h"
 
-// TODO: find a way to make using this variable obsolete
 uint8_t scr_color;
 size_t scr_pos_x;
 size_t scr_pos_y;
+// TODO: find a way to make using this variable obsolete
 size_t unflushed_count;
 char *scr_buf;
 
@@ -23,9 +23,9 @@ void scr_disable_csr() {
 
 void scr_move_csr(uint16_t pos) {
   outb(0x3D4, 0x0F);
-	outb(0x3D5, (uint8_t)(pos & 0xFF));
-	outb(0x3D4, 0x0E);
-	outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
+  outb(0x3D5, (uint8_t)(pos & 0xFF));
+  outb(0x3D4, 0x0E);
+  outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
 }
 
 void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
