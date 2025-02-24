@@ -56,10 +56,8 @@ void scr_flush() {
       scr_pos_x += 8;
       break;
     default:
-      uint16_t where = scr_pos_x + (VGA_COLUMNS * scr_pos_y);
-      vga_ptr[where] =
+      vga_ptr[scr_pos_x + (VGA_COLUMNS * scr_pos_y)] =
           VGA_CHAR(*(scr_buf - unflushed_count), scr_color);
-      scr_move_csr(where);
       if (++scr_pos_x >= VGA_COLUMNS) {
         ++scr_pos_y;
         scr_pos_x -= VGA_COLUMNS;
@@ -67,4 +65,5 @@ void scr_flush() {
       break;
     }
   }
+  scr_move_csr(scr_pos_x + (VGA_COLUMNS * scr_pos_y));
 }
