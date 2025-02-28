@@ -3,7 +3,12 @@ nasm = find_program('nasm')
 assembler = generator(
     nasm,
     output: '@BASENAME@.o',
-    arguments: ['-f', 'elf32', '@INPUT@', '-o', '@OUTPUT@'],
+    arguments: [
+        '-i', meson.current_source_dir(),
+        '-f', 'elf32',
+        '@INPUT@',
+        '-o', '@OUTPUT@',
+    ],
 )
 
 asm_sources = [

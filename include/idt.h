@@ -14,13 +14,6 @@ struct idt_entry {
 
 typedef struct idt_entry idt_entry_t;
 
-struct idt_reg {
-  uint16_t limit;
-  uint32_t base;
-} __attribute__((packed));
-
-typedef struct idt_reg idt_reg_t;
-
 void idt_init();
 void idt_set_gate(size_t index, uint32_t base);
 

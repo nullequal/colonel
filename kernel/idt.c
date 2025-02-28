@@ -40,9 +40,10 @@ void idt_init() {
   idt_set_gate(30, (uint32_t)isr30);
   idt_set_gate(31, (uint32_t)isr31);
 
-  idt_reg_t idtr;
-  idtr.limit = sizeof(idt) - 1;
-  idtr.base = (uint32_t)&idt;
+  struct {
+    uint16_t limit;
+    uint32_t base;
+  } __attribute__((packed)) idtr = {sizeof(idt) - 1, (uint32_t)&idt};
   __asm__ volatile("lidt %0" ::"m"(idtr));
 }
 

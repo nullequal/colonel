@@ -1,0 +1,16 @@
+%ifndef GDT_MAC
+%define GDT_MAC
+
+%define GDT_CODE_SEL 0x08
+%define GDT_DATA_SEL 0x10
+
+%macro RELOAD_SELECTORS 1
+    mov ax, %1
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+%endmacro
+
+%endif
