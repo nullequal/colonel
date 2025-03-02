@@ -1,5 +1,6 @@
 #include "idt.h"
 #include "gdt.h"
+#include "isr.h"
 #include "string.h"
 
 idt_entry_t idt[256];
