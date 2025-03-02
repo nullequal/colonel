@@ -11,9 +11,22 @@
     jmp exception_handler_wrap
 %endmacro
 
+%macro IRQ 1
+  global isr%1
+  isr%1:
+    push 0
+    push %1
+    jmp irq_handler_wrap
+%endmacro
+
 %assign i 0
 %rep 32
 EXCEPTION i
+%assign i i+1
+%endrep
+
+%rep 16
+IRQ i
 %assign i i+1
 %endrep
 

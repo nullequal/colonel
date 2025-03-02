@@ -6,6 +6,7 @@ sources = [
     'isr.c',
     'kprintf.c',
     'string.c',
+    'timer.c',
     'vga.c',
 ]
 

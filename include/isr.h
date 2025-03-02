@@ -1,6 +1,7 @@
 #ifndef ISR_H
 #define ISR_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 struct registers {
@@ -12,7 +13,14 @@ struct registers {
 
 typedef struct registers registers_t;
 
+typedef void (*irq_t)(registers_t *);
+
+void pic_send_eoi(int irq_no);
+void pic_remap(uint8_t pic1_off, uint8_t pic2_off);
+
 __attribute__((noreturn)) void exception_handler(registers_t regs);
+void irq_set_handler(size_t index, irq_t handler);
+void irq_handler(registers_t regs);
 
 extern void isr0();
 extern void isr1();
@@ -46,5 +54,21 @@ extern void isr28();
 extern void isr29();
 extern void isr30();
 extern void isr31();
+extern void isr32();
+extern void isr33();
+extern void isr34();
+extern void isr35();
+extern void isr36();
+extern void isr37();
+extern void isr38();
+extern void isr39();
+extern void isr40();
+extern void isr41();
+extern void isr42();
+extern void isr43();
+extern void isr44();
+extern void isr45();
+extern void isr46();
+extern void isr47();
 
 #endif
