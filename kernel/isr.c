@@ -7,21 +7,25 @@ irq_t irq_handlers[16];
 
 void pic_send_eoi(int irq_no) {
   if (irq_no >= 7)
-    outb(0xA0, 0x20);
-  outb(0x20, 0x20);
+    outb(PIC_SLAVE_COMMAND, PIC_EOI);
+  outb(PIC_MASTER_COMMAND, PIC_EOI);
 }
 
 void pic_remap(uint8_t master_off, uint8_t slave_off) {
-  outb(0x20, 0x11);
-  outb(0xA0, 0x11);
-  outb(0x21, pic1_off);
-  outb(0xA1, pic2_off);
-  outb(0x21, 0x04);
-  outb(0xA1, 0x02);
-  outb(0x21, 0x01);
-  outb(0xA1, 0x01);
-  outb(0x21, 0x0);
-  outb(0xA1, 0x0);
+  outb(PIC_MASTER_COMMAND, PIC_INIT | PIC_IWC4_PRESENT);
+  outb(PIC_SLAVE_COMMAND, PIC_INIT | PIC_IWC4_PRESENT);
+
+  outb(PIC_MASTER_DATA, master_off);
+  outb(PIC_SLAVE_DATA, slave_off);
+
+  outb(PIC_MASTER_DATA, 0x04);
+  outb(PIC_SLAVE_DATA, 0x02);
+
+  outb(PIC_MASTER_DATA, PIC_8086_MODE);
+  outb(PIC_SLAVE_DATA, PIC_8086_MODE);
+
+  outb(PIC_MASTER_DATA, 0x0);
+  outb(PIC_SLAVE_DATA, 0x0);
 }
 
 void exception_handler(registers_t regs) {
