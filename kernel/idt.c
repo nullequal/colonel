@@ -6,7 +6,7 @@
 idt_entry_t idt[256];
 
 void idt_init() {
-  memset(&idt, 0, sizeof(idt_entry_t) * 256);
+  memset(&idt, 0, sizeof(idt));
 
   pic_remap(32, 40);
 
