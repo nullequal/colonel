@@ -16,7 +16,7 @@ typedef struct registers registers_t;
 typedef void (*irq_t)(registers_t *);
 
 void pic_send_eoi(int irq_no);
-void pic_remap(uint8_t pic1_off, uint8_t pic2_off);
+void pic_remap(uint8_t master_off, uint8_t slave_off);
 
 __attribute__((noreturn)) void exception_handler(registers_t regs);
 void irq_set_handler(size_t index, irq_t handler);

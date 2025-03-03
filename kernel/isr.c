@@ -11,7 +11,7 @@ void pic_send_eoi(int irq_no) {
   outb(0x20, 0x20);
 }
 
-void pic_remap(uint8_t pic1_off, uint8_t pic2_off) {
+void pic_remap(uint8_t master_off, uint8_t slave_off) {
   outb(0x20, 0x11);
   outb(0xA0, 0x11);
   outb(0x21, pic1_off);
