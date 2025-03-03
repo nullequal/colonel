@@ -25,7 +25,7 @@ void pic_remap(uint8_t pic1_off, uint8_t pic2_off) {
 }
 
 void exception_handler(registers_t regs) {
-  kprintf("Exception: %d", regs.int_no);
+  kprintf("Exception: %d\n", regs.int_no);
   abort();
 }
 
