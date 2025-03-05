@@ -11,5 +11,5 @@ void init() {
   scr_move_csr(0);
   gdt_init();
   idt_init();
-  timer_init();
+  pit_init();
 }

@@ -3,7 +3,7 @@
 
 #include "isr.h"
 
-void timer_handler(registers_t *regs);
-void timer_init();
+void pit_handler(registers_t *regs);
+void pit_init();
 
 #endif
