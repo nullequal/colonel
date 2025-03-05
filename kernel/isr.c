@@ -12,6 +12,9 @@ void pic_send_eoi(int irq_no) {
 }
 
 void pic_remap(uint8_t master_off, uint8_t slave_off) {
+  uint8_t master_mask = inb(PIC_MASTER_DATA);
+  uint8_t slave_mask = inb(PIC_SLAVE_DATA);
+
   outb(PIC_MASTER_COMMAND, PIC_INIT | PIC_IWC4_PRESENT);
   outb(PIC_SLAVE_COMMAND, PIC_INIT | PIC_IWC4_PRESENT);
 
@@ -24,8 +27,8 @@ void pic_remap(uint8_t master_off, uint8_t slave_off) {
   outb(PIC_MASTER_DATA, PIC_8086_MODE);
   outb(PIC_SLAVE_DATA, PIC_8086_MODE);
 
-  outb(PIC_MASTER_DATA, 0x0);
-  outb(PIC_SLAVE_DATA, 0x0);
+  outb(PIC_MASTER_DATA, master_mask);
+  outb(PIC_SLAVE_DATA, slave_mask);
 }
 
 void exception_handler(registers_t regs) {
