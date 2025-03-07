@@ -1,5 +1,5 @@
 #include "isr.h"
-#include "control.h"
+#include "kernel.h"
 #include "kprintf.h"
 #include "ports.h"
 

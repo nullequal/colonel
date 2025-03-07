@@ -1,9 +1,8 @@
 sources = [
-    'control.c',
     'gdt.c',
     'idt.c',
-    'init.c',
     'isr.c',
+    'kernel.c',
     'kprintf.c',
     'string.c',
     'timer.c',
