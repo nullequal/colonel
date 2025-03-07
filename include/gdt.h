@@ -20,8 +20,8 @@ struct gdt_entry {
 
 typedef struct gdt_entry gdt_entry_t;
 
-void gdt_init();
 void gdt_set_desc(size_t index, uint8_t access);
+void gdt_init();
 
 extern void gdt_load(uint16_t limit, uint32_t base);
 
