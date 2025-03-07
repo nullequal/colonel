@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-char *itoa(int value, char *str);
+char *itoa(int value, char *str, int base);
 int kprintf(const char *format, ...);
 
 #endif

@@ -2,17 +2,21 @@
 #include "string.h"
 #include "vga.h"
 
-char *itoa(int value, char *str) {
+char *itoa(int value, char *str, int base) {
+  if (base < 2 || base > 36) {
+    *str = '\0';
+    return str;
+  }
   char *ptr = str, *ptr1 = str;
   int temp1;
   do {
     temp1 = value;
-    value /= 10;
-    *ptr++ = "9876543210123456789"[9 + (temp1 - value * 10)];
+    value /= base;
+    *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrst"
+             "uvwxyz"[35 + (temp1 - value * base)];
   } while (value);
-  if (temp1 < 0) {
+  if (temp1 < 0)
     *ptr++ = '-';
-  }
   *ptr-- = '\0';
   char temp2;
   while (ptr1 < ptr) {
@@ -52,7 +56,7 @@ int kprintf(const char *format, ...) {
     case 'd':
       format++;
       int value = va_arg(ap, int);
-      itoa(value, str);
+      itoa(value, str, 10);
       n = strlen(str);
       scr_write(str, n);
       break;
