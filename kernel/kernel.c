@@ -11,7 +11,7 @@ void init() {
   scr_move_csr(0);
   gdt_init();
   idt_init();
-  pit_init();
+  pit_init(0);
 }
 
 void abort() {
