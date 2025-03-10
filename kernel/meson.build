@@ -1,4 +1,5 @@
 sources = [
+    'controller.c',
     'gdt.c',
     'idt.c',
     'isr.c',

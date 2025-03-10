@@ -1,5 +1,5 @@
 #include "timer.h"
-#include "isr.h"
+#include "controller.h"
 #include "ports.h"
 
 void pit_init(uint32_t freq_div) {
