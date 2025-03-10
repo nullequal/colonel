@@ -1,4 +1,4 @@
-#include "kprintf.h"
+#include "kernel.h"
 #include "vga.h"
 
 void kmain() {

@@ -1,7 +1,6 @@
 #include "isr.h"
 #include "controller.h"
 #include "kernel.h"
-#include "kprintf.h"
 #include "timer.h"
 
 irq_t irq_handlers[16] = {&pit_handler};
