@@ -3,7 +3,7 @@
 #include "ports.h"
 
 void pit_init(uint32_t freq_div) {
-  irq_set_handler(0, &pit_handler);
+  pic_clear_mask(0);
   outb(0x43,
        PIT_CHANNEL_0 | PIT_ACCESS_LOHI | PIT_MODE_SQUARE_WAVE | PIT_BINARY);
   uint16_t quotient = freq_div <= 1 ? 65535 : PIT_CLOCK / freq_div;
