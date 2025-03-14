@@ -1,5 +1,5 @@
-%ifndef ISR_MAC
-%define ISR_MAC
+%ifndef ISR_MAC_
+%define ISR_MAC_
 
 %macro EXCEPTION 1
   global isr%1

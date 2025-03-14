@@ -1,5 +1,5 @@
-#ifndef KERNEL_H
-#define KERNEL_H
+#ifndef KERNEL_H_
+#define KERNEL_H_
 
 #include <stdarg.h>
 #include <stddef.h>

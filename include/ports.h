@@ -1,5 +1,5 @@
-#ifndef PORTS_H
-#define PORTS_H
+#ifndef PORTS_H_
+#define PORTS_H_
 
 #include <stdint.h>
 

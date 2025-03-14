@@ -1,8 +1,8 @@
 // although i use paging, in x86 segmentation is a must.
 // so i initiallize a gdt with hardcoded overlapping segments
 
-#ifndef GDT_H
-#define GDT_H
+#ifndef GDT_H_
+#define GDT_H_
 
 #define GDT_CODE_SELECTOR 0x08
 

@@ -1,5 +1,5 @@
-%ifndef GDT_MAC
-%define GDT_MAC
+%ifndef GDT_MAC_
+%define GDT_MAC_
 
 %define GDT_CODE_SEL 0x08
 %define GDT_DATA_SEL 0x10
