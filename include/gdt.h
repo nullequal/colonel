@@ -4,10 +4,10 @@
 #ifndef GDT_H_
 #define GDT_H_
 
-#define GDT_CODE_SELECTOR 0x08
-
 #include <stddef.h>
 #include <stdint.h>
+
+#define GDT_CODE_SELECTOR 0x08
 
 struct gdt_entry {
   uint16_t limit_low;

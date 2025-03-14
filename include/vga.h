@@ -32,12 +32,13 @@ enum {
   VGA_COLOR_WHITE = 0xF,
 };
 
-void scr_clear();
-void scr_write(const char *s, size_t n);
-void scr_flush();
-void scr_set_color(uint8_t fg, uint8_t bg);
 void scr_enable_csr(uint8_t start_scanline, uint8_t end_scanline);
 void scr_disable_csr();
 void scr_move_csr(uint16_t pos);
+
+void scr_clear();
+void scr_set_color(uint8_t fg, uint8_t bg);
+void scr_write(const char *s, size_t n);
+void scr_flush();
 
 #endif

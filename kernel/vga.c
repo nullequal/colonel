@@ -27,13 +27,13 @@ void scr_move_csr(uint16_t pos) {
   outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
 }
 
-void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
-
 void scr_clear() {
   for (size_t i = 0; i < VGA_COLUMNS * VGA_ROWS; ++i) {
     ((uint16_t *)VGA_ADDR)[i] = 0x0 | (scr_color << 8);
   }
 }
+
+void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }
 
 void scr_write(const char *s, size_t n) {
   unflushed_count += n;
