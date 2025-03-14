@@ -18,8 +18,10 @@ void idt_init() {
   memset(&idt, 0, sizeof(idt));
 
   pic_remap(32, 40);
-  for (size_t i = 0; i < 16; ++i)
+  for (size_t i = 0; i < 16; ++i) {
+    if (i == 2) continue;
     pic_mask(i);
+  }
 
   idt_set_gate(0, (uint32_t)isr0);
   idt_set_gate(1, (uint32_t)isr1);
