@@ -30,7 +30,7 @@ void scr_move_csr(uint16_t pos) {
 
 void scr_clear() {
   for (size_t i = 0; i < VGA_COLUMNS * VGA_ROWS; ++i) {
-    ((uint16_t *)VGA_ADDR)[i] = 0x0 | (scr_color << 8);
+    ((uint16_t*)VGA_ADDR)[i] = VGA_CHAR(0x0, scr_color);
   }
 }
 
