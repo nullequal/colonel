@@ -1,4 +1,5 @@
 #include "vga.h"
+
 #include "ports.h"
 
 uint8_t scr_color;
