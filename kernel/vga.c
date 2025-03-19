@@ -32,6 +32,9 @@ void scr_clear() {
   for (size_t i = 0; i < VGA_COLUMNS * VGA_ROWS; ++i) {
     ((uint16_t*)VGA_ADDR)[i] = VGA_CHAR(0x0, scr_color);
   }
+  scr_pos_x = 0;
+  scr_pos_y = 0;
+  scr_move_csr(0);
 }
 
 void scr_set_color(uint8_t fg, uint8_t bg) { scr_color = fg | (bg << 4); }

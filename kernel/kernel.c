@@ -10,9 +10,8 @@ __attribute__((noreturn)) extern void halt();
 
 void init() {
   scr_set_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
-  scr_clear();
   scr_enable_csr(14, 15);
-  scr_move_csr(0);
+  scr_clear();
   gdt_init();
   idt_init();
   pit_init(0);
