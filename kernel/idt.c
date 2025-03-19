@@ -4,6 +4,7 @@
 #include "gdt.h"
 #include "string.h"
 
+extern uint32_t isr_table[48];
 idt_entry_t idt[256];
 
 void idt_set_gate(size_t index, uint32_t base) {

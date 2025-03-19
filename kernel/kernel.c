@@ -6,6 +6,8 @@
 #include "timer.h"
 #include "vga.h"
 
+__attribute__((noreturn)) extern void halt();
+
 void init() {
   scr_set_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
   scr_clear();

@@ -24,6 +24,4 @@ typedef struct idt_reg idt_reg_t;
 void idt_set_gate(size_t index, uint32_t base);
 void idt_init();
 
-extern uint32_t isr_table[48];
-
 #endif

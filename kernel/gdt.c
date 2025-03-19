@@ -1,5 +1,7 @@
 #include "gdt.h"
 
+extern void gdt_load(uint16_t limit, uint32_t base);
+
 gdt_entry_t gdt[5];
 
 void gdt_set_desc(size_t index, uint8_t access) {
