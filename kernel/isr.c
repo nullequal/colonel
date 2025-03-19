@@ -3,11 +3,14 @@
 #include "controller.h"
 #include "kernel.h"
 #include "timer.h"
+#include "vga.h"
 
 irq_t irq_handlers[16] = {&pit_handler};
 
 void exception_handler(registers_t regs) {
+  scr_clear();
   kprintf("Exception: %d\n", regs.int_no);
+  kprintf("Error: %x\n", regs.err_no);
   abort();
 }
 
