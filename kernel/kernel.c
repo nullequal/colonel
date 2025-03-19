@@ -71,8 +71,13 @@ int kprintf(const char *format, ...) {
       break;
     case 'd':
       format++;
-      int value = va_arg(ap, int);
-      itoa(value, str, 10);
+      itoa(va_arg(ap, int), str, 10);
+      n = strlen(str);
+      scr_write(str, n);
+      break;
+    case 'x':
+      format++;
+      itoa(va_arg(ap, int), str, 16);
       n = strlen(str);
       scr_write(str, n);
       break;
