@@ -30,4 +30,12 @@ IRQ i
 %assign i i+1
 %endrep
 
+global isr_table
+isr_table:
+%assign j 0
+%rep i
+    dd isr%+j
+%assign j j+1
+%endrep
+
 %endif
