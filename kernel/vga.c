@@ -52,6 +52,12 @@ void scr_flush() {
   uint16_t *vga_ptr = (uint16_t *)VGA_ADDR;
   for (; unflushed_count != 0; unflushed_count--) {
     switch (*(scr_buf - unflushed_count)) {
+    case '\b':
+      if (scr_pos_x) {
+        vga_ptr[--scr_pos_x + (VGA_COLUMNS * scr_pos_y)] =
+            VGA_CHAR(0x0, scr_color);
+      }
+      break;
     case '\n':
       ++scr_pos_y;
       scr_pos_x = 0;
