@@ -10,3 +10,14 @@ executable(
     link_with: [k],
     name_suffix: 'bin',
 )
+
+# unit test: input
+executable(
+    'input',
+    'input.c',
+    include_directories: includes,
+    c_args: ['-ffreestanding'],
+    link_args: ['-T', exec_ld, '-nostdlib'],
+    link_with: [k],
+    name_suffix: 'bin',
+)

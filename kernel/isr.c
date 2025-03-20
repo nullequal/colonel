@@ -1,11 +1,12 @@
 #include "isr.h"
 
 #include "controller.h"
+#include "kb.h"
 #include "kernel.h"
 #include "timer.h"
 #include "vga.h"
 
-irq_t irq_handlers[16] = {&pit_handler};
+irq_t irq_handlers[16] = {&pit_handler, &kb_handler};
 
 void exception_handler(registers_t regs) {
   scr_clear();

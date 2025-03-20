@@ -3,6 +3,7 @@ sources = [
     'gdt.c',
     'idt.c',
     'isr.c',
+    'kb.c',
     'kernel.c',
     'string.c',
     'timer.c',
